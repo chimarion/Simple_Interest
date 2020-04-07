@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Simple_Interest</title>
+    </head>
+    <body>
+        <script>
+           let data = [{
+               principal: 2500, 
+               time: 1.8
+            },
+            {
+                principal: 1000, 
+                time: 5
+            },
+            {
+                principal: 3000, 
+                time: 1
+            },
+            {
+                principal: 2000, 
+                time: 3
+            }       
+            ]; 
+            
+            let rate;
+            function interestCalculator (list) {
+                let interestData = list.map(item => {
+                    let {
+                        principal, time
+                    } = item;
+                    if (principal >= 2500 && 1 < time < 3) {
+                        rate = 3;
+                    }
+                    else if (principal >= 2500 && time >= 3) {
+                        rate = 4;
+                    }
+                    else if (principal < 2500 || time <= 1) {
+                        rate = 2;
+                    }
+                    else {
+                        rate = 1;
+                    }
+
+                    let interest = (principal * rate * time) / 100;
+
+                    item.interest = interest;
+                    item.rate = rate;
+
+                    return item;
+                });
+                return interestData;
+            }            
+            console.log(interestCalculator(data));            
+        </script>
+    </body>
+</html>
